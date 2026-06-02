@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastro de tags</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <header class="site-header">
+        <h1><span>EDITE AS TAGS</span></h1>
+    </header>
+
+    <nav class="site-nav">
+        <a th:href="@{/}">&#127968; Início</a>
+        <a th:href="@{/tags}">&#128203; Listar Tags</a>
+    </nav>
+
+    <main class="site-main">
+        <div class="content-card">
+            <h2>Cadastrar Nova Tag</h2>
+            <form action="#" th:action="@{/tag}" method="post" th:object="${tag}">
+                <div class="form-group">
+                    <label for="nome">Nome da Tag</label>
+                    <input type="text" id="nome" th:field="*{nome}" placeholder="Digite o nome da tag...">
+                </div>
+                <input type="submit" value="Cadastrar">
+            </form>
+        </div>
+    </main>
+</body>
+</html>

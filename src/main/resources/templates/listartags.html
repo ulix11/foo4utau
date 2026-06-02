@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listagem de tags</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <header class="site-header">
+        <h1><span>EDITE AS TAGS</span></h1>
+    </header>
+
+    <nav class="site-nav">
+        <a th:href="@{/}">&#127968; Início</a>
+        <a th:href="@{/tag}">&#128206; Cadastrar Tag</a>
+    </nav>
+
+    <main class="site-main">
+        <div class="content-card">
+            <h2>Tags Cadastradas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <td><b>NOME</b></td>
+                        <td><b>EDITAR</b></td>
+                        <td><b>EXCLUIR</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="tag : ${tags}">
+                        <td th:text="${tag.nome}"></td>
+                        <td>
+                            <a class="action-link" th:href="'/tag/' + ${tag.idTag} + '/atualizar'">&#9998; Editar</a>
+                        </td>
+                        <td>
+                            <form th:action="@{'/tag/' + ${tag.idTag} + '/excluir'}" method="post">
+                                <input type="submit" value="&#128465; Excluir">
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

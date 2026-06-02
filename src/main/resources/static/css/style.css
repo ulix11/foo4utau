@@ -1,0 +1,490 @@
+/* ============================================================
+   foo4utau – Design System
+   Paleta fornecida:
+     Roxo:    #9267BE  #251733  #7A688C
+     Rosa:    #F47983  #C2888D  #331A1C
+     Vermelho:#e4425c  #B05665  #332427
+     Neutros: #1A1919  #474545  #C2BABA  #706C6C
+   ============================================================ */
+
+/* ---------- Google Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap');
+
+/* ---------- Custom Properties ---------- */
+:root {
+    /* Purple */
+    --purple:        #9267BE;
+    --purple-deep:   #251733;
+    --purple-muted:  #7A688C;
+
+    /* Pink */
+    --pink:          #F47983;
+    --pink-muted:    #C2888D;
+    --pink-deep:     #331A1C;
+
+    /* Red */
+    --red:           #e4425c;
+    --red-muted:     #B05665;
+    --red-deep:      #332427;
+
+    /* Neutrals */
+    --black:         #1A1919;
+    --gray-dark:     #474545;
+    --gray-light:    #C2BABA;
+    --gray-mid:      #706C6C;
+
+    /* Derived */
+    --bg-body:       #1A1919;
+    --bg-header:     #251733;
+    --bg-card:       #252222;
+    --bg-card-hover: #2e2a2a;
+    --text-primary:  #C2BABA;
+    --text-heading:  #F47983;
+    --text-accent:   #9267BE;
+    --border:        #474545;
+
+    /* Typography */
+    --font-sans:  'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono:  'JetBrains Mono', monospace;
+
+    /* Sizing */
+    --radius:     12px;
+    --radius-sm:  8px;
+    --shadow:     0 8px 32px rgba(0, 0, 0, 0.45);
+    --transition: 0.25s cubic-bezier(.4,0,.2,1);
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Body ---------- */
+body {
+    font-family: var(--font-sans);
+    background: var(--bg-body);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+}
+
+/* ---------- Header (Esqueleto SVG – faixa superior) ---------- */
+.site-header {
+    background: linear-gradient(135deg, var(--purple-deep) 0%, var(--red-deep) 100%);
+    padding: 2rem 2rem 1.8rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 3px solid var(--purple);
+}
+
+.site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 0%, rgba(146,103,190,0.2) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 100%, rgba(244,121,131,0.15) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.site-header h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+.site-header h1 span {
+    background: linear-gradient(90deg, var(--pink), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ---------- Navigation ---------- */
+.site-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.8rem 2rem;
+    background: var(--gray-dark);
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+}
+
+.site-nav a,
+.nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1.3rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--gray-light);
+    text-decoration: none;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition);
+}
+
+.site-nav a:hover,
+.nav-link:hover {
+    color: #fff;
+    background: rgba(146, 103, 190, 0.15);
+    border-color: var(--purple);
+    transform: translateY(-1px);
+}
+
+/* ---------- Main Content (esqueleto SVG – área escura central) ---------- */
+.site-main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3rem 2rem;
+}
+
+/* ---------- Card (esqueleto SVG – caixa de conteúdo) ---------- */
+.content-card {
+    width: 100%;
+    max-width: 720px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    box-shadow: var(--shadow);
+    animation: fadeSlideUp 0.5s ease-out;
+}
+
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.content-card h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--purple);
+    letter-spacing: -0.02em;
+}
+
+/* ---------- Forms ---------- */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label,
+.form-label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--purple);
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--text-primary);
+    background: var(--bg-body);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 3px rgba(146, 103, 190, 0.25);
+}
+
+/* ---------- Buttons ---------- */
+.btn,
+input[type="submit"],
+button[type="submit"],
+button[type="button"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.btn-primary,
+input[type="submit"] {
+    background: linear-gradient(135deg, var(--purple), var(--red));
+    box-shadow: 0 4px 14px rgba(146, 103, 190, 0.35);
+}
+
+.btn-primary:hover,
+input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(146, 103, 190, 0.5);
+    filter: brightness(1.1);
+}
+
+.btn-primary:active,
+input[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(146, 103, 190, 0.3);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--red), var(--red-deep));
+    box-shadow: 0 4px 14px rgba(228, 66, 92, 0.3);
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(228, 66, 92, 0.45);
+    filter: brightness(1.1);
+}
+
+.btn-secondary {
+    background: var(--gray-dark);
+    border: 1px solid var(--border);
+    color: var(--gray-light);
+}
+
+.btn-secondary:hover {
+    background: var(--gray-mid);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* ---------- Table ---------- */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+}
+
+thead {
+    background: linear-gradient(135deg, var(--purple-deep), var(--red-deep));
+}
+
+thead td,
+thead th {
+    padding: 1rem 1.2rem;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--pink);
+    border-bottom: 2px solid var(--purple);
+}
+
+tbody tr {
+    transition: background var(--transition);
+}
+
+tbody tr:nth-child(even) {
+    background: rgba(71, 69, 69, 0.2);
+}
+
+tbody tr:hover {
+    background: rgba(146, 103, 190, 0.08);
+}
+
+tbody td {
+    padding: 0.85rem 1.2rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ---------- Links ---------- */
+a {
+    color: var(--purple);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--transition);
+}
+
+a:hover {
+    color: var(--pink);
+}
+
+/* Action links inside tables */
+.action-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.35rem 0.8rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--purple);
+    background: rgba(146, 103, 190, 0.1);
+    border: 1px solid rgba(146, 103, 190, 0.25);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition);
+}
+
+.action-link:hover {
+    background: rgba(146, 103, 190, 0.2);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+/* ---------- Inline form (delete button inside table) ---------- */
+td form {
+    display: inline;
+}
+
+td form input[type="submit"] {
+    padding: 0.35rem 0.8rem;
+    font-size: 0.82rem;
+    background: linear-gradient(135deg, var(--red), var(--red-deep));
+    box-shadow: 0 2px 8px rgba(228, 66, 92, 0.2);
+}
+
+/* ---------- Success / Feedback ---------- */
+.success-message {
+    text-align: center;
+    padding: 2rem;
+}
+
+.success-message h1,
+.success-icon {
+    font-size: 2rem;
+    color: var(--pink);
+    margin-bottom: 1rem;
+}
+
+.success-message .checkmark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--purple), var(--pink));
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    animation: popIn 0.4s ease-out;
+}
+
+@keyframes popIn {
+    from { transform: scale(0); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+/* ---------- Error page overrides ---------- */
+.error-page dl {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 0.75rem 1rem;
+    padding: 1.2rem;
+    background: var(--bg-body);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+}
+
+.error-page dt {
+    font-weight: 700;
+    color: var(--purple);
+}
+
+.error-page dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+    color: var(--text-primary);
+}
+
+.error-page pre {
+    padding: 1rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    background: var(--bg-body);
+    color: var(--gray-light);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+.error-page .stack-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.error-page .stack-header h2 {
+    margin: 0;
+    color: var(--text-heading);
+    border: none;
+    padding: 0;
+}
+
+.error-page button {
+    background: linear-gradient(135deg, var(--purple), var(--red));
+    box-shadow: 0 4px 14px rgba(146, 103, 190, 0.35);
+}
+
+.error-page button:disabled {
+    background: var(--gray-dark);
+    box-shadow: none;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+    .site-header { padding: 1.5rem 1rem 1.2rem; }
+    .site-main   { padding: 1.5rem 1rem; }
+    .content-card { padding: 1.5rem; }
+
+    .error-page dl {
+        grid-template-columns: 1fr;
+    }
+
+    table { font-size: 0.88rem; }
+
+    thead td, thead th { padding: 0.7rem 0.8rem; }
+    tbody td { padding: 0.6rem 0.8rem; }
+}

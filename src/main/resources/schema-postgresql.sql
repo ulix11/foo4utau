@@ -1,5 +1,4 @@
-CREATE TABLE IF NOT EXISTS cliente (
-    id SERIAL PRIMARY KEY,
-    nome VARCHAR(50),
-    cpf VARCHAR(11)
+CREATE TABLE IF NOT EXISTS tb_tags (
+    id_tag integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nome VARCHAR(50)
 );

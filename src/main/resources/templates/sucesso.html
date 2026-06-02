@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sucesso</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <header class="site-header">
+        <h1><span>EDITE AS TAGS</span></h1>
+    </header>
+
+    <nav class="site-nav">
+        <a th:href="@{/}">&#127968; Início</a>
+        <a th:href="@{/tag}">&#128206; Cadastrar Tag</a>
+        <a th:href="@{/tags}">&#128203; Listar Tags</a>
+    </nav>
+
+    <main class="site-main">
+        <div class="content-card success-message">
+            <div class="checkmark">&#10003;</div>
+            <h1>TAG CADASTRADA!</h1>
+            <p style="margin-bottom: 1.5rem; color: var(--gray-light);">A tag foi salva com sucesso no banco de dados.</p>
+            <a th:href="@{/tags}" class="btn btn-primary">&#128203; Listar Tags</a>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Sistema de Cadastro de Clientes</title>
+	<title>foo4utau - Tags</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
-	<h1>OLA FOO!</h1>
-	<ul>
-		<li><a >Inserir vb</a></li>
-		<li><a >Listar vb</a></li>
-	</ul>
+	<header class="site-header">
+		<h1><span>EDITE AS TAGS</span></h1>
+	</header>
+
+	<nav class="site-nav">
+		<a th:href="@{/tag}">&#128206; Cadastrar Tag</a>
+		<a th:href="@{/tags}">&#128203; Listar Tags</a>
+	</nav>
+
+	<main class="site-main">
+		<div class="content-card">
+			<h1>WIP</h1>
+		</div>
+	</main>
 </body>
 </html>

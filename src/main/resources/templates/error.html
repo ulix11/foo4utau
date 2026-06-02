@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Erro</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body class="error-page">
+    <header class="site-header">
+        <h1><span>EDITE AS TAGS</span></h1>
+    </header>
+
+    <nav class="site-nav">
+        <a th:href="@{/}">&#127968; Início</a>
+        <a th:href="@{/tag}">&#128206; Cadastrar Tag</a>
+        <a th:href="@{/tags}">&#128203; Listar Tags</a>
+    </nav>
+
+    <main class="site-main">
+        <div class="content-card" style="max-width: 960px;">
+            <h2>Erro na aplicação</h2>
+            <p style="margin-bottom: 1.5rem;"><a th:href="@{/}">Voltar para o início</a></p>
+
+            <dl>
+                <dt>Status</dt>
+                <dd th:text="${status}">500</dd>
+
+                <dt>Erro</dt>
+                <dd th:text="${error}">Internal Server Error</dd>
+
+                <dt>Mensagem</dt>
+                <dd th:text="${message}">Mensagem do erro</dd>
+
+                <dt>Exceção</dt>
+                <dd th:text="${exception}">java.lang.RuntimeException</dd>
+
+                <dt>Caminho</dt>
+                <dd th:text="${path}">/rota</dd>
+            </dl>
+
+            <div class="stack-header">
+                <h2 style="border:none; padding:0; margin:0;">Stack trace</h2>
+                <button type="button" id="copyStackTrace">Copiar stack trace</button>
+            </div>
+            <pre id="stackTrace" th:text="${trace}">Stack trace indisponível</pre>
+        </div>
+    </main>
+
+    <script>
+        const copyButton = document.getElementById("copyStackTrace");
+        const stackTrace = document.getElementById("stackTrace");
+        const initialButtonText = copyButton.textContent;
+
+        function showCopyFeedback(message) {
+            copyButton.textContent = message;
+            copyButton.disabled = true;
+
+            setTimeout(function () {
+                copyButton.textContent = initialButtonText;
+                copyButton.disabled = false;
+            }, 1800);
+        }
+
+        function copyWithSelection(text) {
+            const selection = window.getSelection();
+            const range = document.createRange();
+
+            range.selectNodeContents(stackTrace);
+            selection.removeAllRanges();
+            selection.addRange(range);
+            document.execCommand("copy");
+            selection.removeAllRanges();
+        }
+
+        copyButton.addEventListener("click", function () {
+            const text = stackTrace.textContent;
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text)
+                    .then(function () {
+                        showCopyFeedback("Copiado");
+                    })
+                    .catch(function () {
+                        copyWithSelection(text);
+                        showCopyFeedback("Copiado");
+                    });
+                return;
+            }
+
+            copyWithSelection(text);
+            showCopyFeedback("Copiado");
+        });
+    </script>
+</body>
+</html>
