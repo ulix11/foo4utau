@@ -1,0 +1,15 @@
+target/
+.git/
+.gitignore
+.gitattributes
+.agents/
+.codex/
+.vscode/
+.idea/
+*~
+*.orig
+*.bak
+*.class
+*.log
+.DS_Store
+*.iml
