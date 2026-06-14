@@ -1,0 +1,21 @@
+{
+  "name": "Spring Boot",
+  "image": "mcr.microsoft.com/devcontainers/java:21",
+
+  "forwardPorts": [8080, 8081],
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-debug",
+        "vscjava.vscode-java-pack",
+        "openai.chatgpt",
+        "GitHub.copilot-chat",
+        "Oracle.oracle-java",
+        "vscjava.vscode-maven",
+        "cweijan.dbclient-jdbc",
+        "eamodio.gitlens"
+      ]
+    }
+  }
+}
